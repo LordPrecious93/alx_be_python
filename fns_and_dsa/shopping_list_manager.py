@@ -9,13 +9,17 @@ def display_menu():
 
 def main():
     """Main function to manage the shopping list."""
-    shopping_list = []
+    shopping_list = []  # Define the array (list) to store shopping items
 
     while True:
-        display_menu()
-        choice = input("Enter your choice: ").strip()
+        display_menu()  # Call display_menu to show options
+        try:
+            choice = int(input("Enter your choice (number): ").strip())  # Ensure input is a number
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+            continue
 
-        if choice == '1':
+        if choice == 1:
             # Add an item
             item = input("Enter the name of the item to add: ").strip()
             if item:
@@ -24,7 +28,7 @@ def main():
             else:
                 print("Invalid item name. Please try again.")
 
-        elif choice == '2':
+        elif choice == 2:
             # Remove an item
             item = input("Enter the name of the item to remove: ").strip()
             if item in shopping_list:
@@ -33,7 +37,7 @@ def main():
             else:
                 print(f"'{item}' is not in the shopping list.")
 
-        elif choice == '3':
+        elif choice == 3:
             # View the list
             if shopping_list:
                 print("\nCurrent Shopping List:")
@@ -42,7 +46,7 @@ def main():
             else:
                 print("\nYour shopping list is empty.")
 
-        elif choice == '4':
+        elif choice == 4:
             # Exit
             print("Goodbye!")
             break
